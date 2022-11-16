@@ -2,7 +2,7 @@ import dash
 from dash import dcc, html, Input, Output
 import dash_bootstrap_components as dbc
 
-from pages import page1, page2
+from pages import page1, page2, page3
 
 
 app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP], suppress_callback_exceptions=True,
@@ -14,6 +14,7 @@ app.layout = html.Div([
         children=[
             dbc.NavItem(dbc.NavLink("Page 1", href="/page1")),
             dbc.NavItem(dbc.NavLink("Page 2", href="/page2")),
+            dbc.NavItem(dbc.NavLink("Page 3", href="/page3")),
         ], brand="Navbar"
     ),
     html.Div(id="layout")
@@ -25,6 +26,8 @@ def set_layout(pathname):
         return page1.layout
     elif pathname == "/page2":
         return page2.layout
+    elif pathname == "/page3":
+        return page3.layout
     return html.H2("404: not found")
 
 
